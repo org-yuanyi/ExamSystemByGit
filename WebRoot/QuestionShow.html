@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>试题显示/增加测试</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript">
+  		$(function(){
+  			$("#btnSel").click(function(){
+				selQuestion($("#form1").serialize());
+			});
+			selLesson();
+			selTaoti();
+			selQuestion($("#form1").serialize());
+  		});
+  		function selLesson(){
+			$.ajax({
+				"url":"QuestionServlet",
+				"type":"post",
+				"data":"op=selLesson",
+				"dataType":"json",
+				"async":true,
+				"success":function(lList){
+					var str = "<option value='0'>全部</option>";
+					$(lList).each(function(i,l){
+						str += "<option value='" + l.lessoId + "'>" + l.lessonName + "</option>";
+					});
+					$("[name='lessonId']").html(str);
+				},
+				"error":function(q,w,e){
+					alert(e);
+				}
+			});
+		}
+		function selTaoti(){
+			$.ajax({
+				"url":"QuestionServlet",
+				"type":"post",
+				"data":"op=selTaoti",
+				"dataType":"json",
+				"async":true,
+				"success":function(tList){
+					var str = "<option value='0'>全部</option>";
+					$(tList).each(function(i,t){
+						str += "<option value='" + t.taoTiId + "'>" + t.taoTiName + "</option>";
+					});
+					$("[name='TaotiId']").html(str);
+				},
+				"error":function(q,w,e){
+					alert(e);
+				}
+			});
+		}
+		function selQuestion(dt){
+			$.ajax({
+				"url":"QuestionServlet",
+				"type":"post",
+				"data":dt,
+				"dataType":"json",
+				"async":true,
+				"success":function(qPage){
+					var str = "";
+					$(qPage.pageList).each(function(i,q){
+						str += "<tr>";
+						str +="<td>" + q.Taotiid + "</td>";
+						str +="<td>" + q.lessonName + "</td>";
+						str +="<td>" + q.Taotiid + "</td>";
+						str +="<td>" + q.taotiName + "</td>";
+						str += "</tr>";
+					});
+					if(qPage.pageList.length == 0){
+						str = "<tr style='line-height:50px'><th colspan='10'>该查询条件下无套题</th></tr>";
+					}
+					str += "<tr style='line-height:50px'><th colspan='10'>";
+					str += "<a name='page' href='1'>首页</a>&nbsp;&nbsp;&nbsp;";
+					str += "<a name='page' href='" + qPage.prePage + "'>上一页</a>&nbsp;&nbsp;&nbsp;";
+					str += "<a name='page' href='" + qPage.nextPage + "'>下一页</a>&nbsp;&nbsp;&nbsp;";
+					str += "<a name='page' href='" + qPage.totalPage + "'>尾页</a>";
+					str += "</th></tr>";
+					str += "<tr><th colspan='10'>当前页码：" + qPage.pageNo + "&nbsp;&nbsp;&nbsp;总共有" + newsPage.totalCount + "套套题&nbsp;&nbsp;&nbsp;共有" + newsPage.totalPage + "页</th></tr>";
+					$("tbody").html(str);
+					$("a[name='page']").click(function(){
+						selNews($("#form1").serialize() + "&pageNo=" + $(this).attr("href"));
+						return false;
+					});
+				},
+				"error":function(q,w,e){
+					alert(e);
+				}
+			});
+		}
+					
+  </script>
+  </head>
+  
+  <body>
+    <table>
+    		<thead>
+    			<tr>
+		    		<td colspan="10">
+		    			<form id="form1" action="">
+		    				<input name="op" type="hidden" value="sel">
+		    				课程名称：<select name="lessonId"></select>&nbsp;&nbsp;&nbsp;
+		    				套题名称：<select name="TaotiId"></select>&nbsp;&nbsp;&nbsp;
+		    				所属章节：<input name="lessonChapter"/>&nbsp;&nbsp;&nbsp;
+		    				所属知识点：<input  name="lessonblog" />&nbsp;&nbsp;&nbsp;
+		    				<input type="button" id="btnSel" value="查询" />
+		    			</form>
+		    		</td>
+		    	</tr>
+		    	<tr>
+		    		<td>套题编号</td>
+		    		<td>套题名称</td>
+		    		<td>课程ID</td>
+		    		<td>课程名称</td>
+		    	</tr>
+    		</thead>
+	    	
+	    	<tbody><!-- 数据，分页标签 --></tbody>
+	    	<tfoot>
+	    		<tr>
+		    		<th colspan="10" align="right">
+		    			<a href="QuestionServlet?op=add">添加试题</a>
+		    		</th>
+		    	</tr>
+	    	</tfoot>
+	    </table>
+  </body>
+</html>

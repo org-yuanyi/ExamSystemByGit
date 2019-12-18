@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>学生考试管理平台</title>
+    <link rel="stylesheet" type="text/css" href="css/left-side-menu.css">
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css">
+    <style>
+    	#question{
+    		position: relative;
+    		top: -691px;
+    		left: 220px;
+    		
+    	}
+    </style>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="js/left-side-menu.js"></script>
+</head>
+<body>
+
+<div class ="top"  style="width: 100%;height: 80px;background-color: #397bc5"></div>
+<div class="left-side-menu" >
+    <div class="lsm-expand-btn">
+        <div class="lsm-mini-btn">
+            <label>
+                <input type="checkbox" checked="checked">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="30" />
+                    <path class="line--1" d="M0 40h62c18 0 18-20-17 5L31 55" />
+                    <path class="line--2" d="M0 50h80" />
+                    <path class="line--3" d="M0 60h62c18 0 18 20-17-5L31 45" />
+                </svg>
+            </label>
+
+        </div>
+<!--        <input type="text"/>-->
+
+    </div>
+    <div class="lsm-container">
+        <div class="lsm-scroll" >
+            <div class="lsm-sidebar">
+                <ul>
+                    <li class="lsm-sidebar-item">
+                        <a href="javascript:;"><i class="my-icon lsm-sidebar-icon icon_1"></i><span>班级管理</span><i class="my-icon lsm-sidebar-more"></i></a>
+                        <ul>
+                            <li><a href="javascript:;"><span>地爆天星</span></a></li>
+                            <li><a class="active"  href="javascript:;"><span>无线月读</span></a></li>
+                            <li><a href="javascript:;"><span>一乐拉面</span></a></li>
+                            <li class="lsm-sidebar-item">
+                                <a href="javascript:;"><i class="my-icon lsm-sidebar-icon "></i><span>二级菜单11</span><i class="my-icon lsm-sidebar-more"></i></a>
+                                <ul>
+                                    <li><a href="javascript:;"><span>地爆天星</span></a></li>
+                                    <li><a href="javascript:;"><span>无线月读</span></a></li>
+                                    <li><a href="javascript:;"><span>一乐拉面</span></a></li>
+                                </ul>
+                            </li>
+
+                            <li class="lsm-sidebar-item">
+                                <a href="javascript:;"><i class="my-icon lsm-sidebar-icon "></i><span>二级菜单22</span><i class="my-icon lsm-sidebar-more"></i></a>
+                                <ul >
+                                    <li><a href="javascript:;"><span>血继限界</span></a></li>
+                                    <li><a href="javascript:;"><span>秽土转生</span></a></li>
+                                    <li><a href="javascript:;"><span>万象天引</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="lsm-sidebar-item">
+                        <a href="javascript:;"><i class="my-icon lsm-sidebar-icon icon_2"></i><span>学习计划</span><i class="my-icon lsm-sidebar-more"></i></a>
+                        <ul>
+                            <li><a href="javascript:;"><span>地爆天星1</span></a></li>
+                            <li><a href="javascript:;"><span>神罗天征1</span></a></li>
+                            <li><a href="javascript:;"><span>八门遁甲1</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="lsm-sidebar-item">
+                        <a href="javascript:;"><i class="my-icon lsm-sidebar-icon icon_3"></i><span>学习管理</span><i class="my-icon lsm-sidebar-more"></i></a>
+                        <ul>
+                            <li><a href="javascript:;"><span>学员自测考试</span></a></li>
+                            <li><a href="QuestionShow.html" target="myIfr"><span>定制试卷</span></a></li>
+                            <li><a href="javascript:;"><span>定制测试</span></a></li>
+							<li><a href="javascript:;"><span>私有题库</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="lsm-sidebar-item">
+                        <a href="javascript:;"><i class="my-icon lsm-sidebar-icon icon-iconset0308"></i><span>内部学习</span><i class="my-icon lsm-sidebar-more"></i></a>
+                        <ul>
+                            <li><a href="javascript:;"><span>火之国4</span></a></li>
+                            <li><a href="javascript:;"><span>沙之国4</span></a></li>
+                            <li><a href="javascript:;"><span>火影忍者4</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="lsm-sidebar-item">
+                        <a href="javascript:;"><i class="my-icon lsm-sidebar-icon icon-chongzhi1"></i><span>评测与考试</span><i class="my-icon lsm-sidebar-more"></i></a>
+                        <ul>
+							<li><a href="javascript:;"><span>学员自测考试</span></a></li>
+                            <li><a href="javascript:;"><span>定制试卷</span></a></li>
+                            <li><a href="javascript:;"><span>定制测试</span></a></li>
+							<li><a href="javascript:;"><span>私有题库</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="lsm-sidebar-item">
+                        <a href="javascript:;"><i class="my-icon lsm-sidebar-icon icon_3"></i><span>功能</span><i class="my-icon lsm-sidebar-more"></i></a>
+                        <ul>
+                            <li><a href="javascript:;"><span>火之国</span></a></li>
+                            <li><a href="javascript:;"><span>最后一条子菜单</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+             
+        </div>
+        
+    </div>
+</div>
+<div id="question" style="width:86%;height:92%;border:1px solid blue;display:inline-block;">
+    	<iframe name="myIfr" width="100%" height="100%"></iframe>
+</div>
+    
+</body>
+</html>
+
+

@@ -45,10 +45,21 @@ public class QuestionServiceImpl implements QuesthionService {
     }
 
     @Override
-    public PageUtil<QuestionInfo> getQuestionInfosBySomeAndPage(QuestionInfo q,
-                                                                int start, int pageSize) {
-
-        return null;
+    public PageUtil<QuestionInfo> getQuestionInfosBySomeAndPage(QuestionInfo q,int pageNo, int pageSize) {
+    	PageUtil<QuestionInfo> qPageUtil = new PageUtil<QuestionInfo>();
+    	QuestionInfo questionInfo = new QuestionInfo();
+        questionInfo.setLessonBlog("%" + questionInfo.getLessonBlog() + "%");
+        questionInfo.setLessonChapter("%" + questionInfo.getLessonChapter() + "%");
+        questionInfo.setTaoTiId(questionInfo.getTaoTiId());
+        questionInfo.setLessonId(questionInfo.getLessonId());
+        int start = (pageNo - 1) * pageSize;
+        List<QuestionInfo> qList = qd.getQuestionInfosBySomeAndPage(questionInfo, start, pageSize);
+        int count = qd.getCountByLike(questionInfo);
+        qPageUtil.setPageNo(pageNo);
+        qPageUtil.setPageSize(pageSize);
+        qPageUtil.setTotalCount(count);
+        qPageUtil.setPageList(qList);
+        return qPageUtil;
     }
 
 }

@@ -58,9 +58,9 @@ public interface QuesthionService {
      * 模糊查询和分页查询试题
      *
      * @param 试题对象
-     * @param start    分页查询起始行
+     * @param pageNo 起始页
      * @param pageSize 分页查询每页显示的行数
      * @return 试题对象的集合
      */
-    public PageUtil<QuestionInfo> getQuestionInfosBySomeAndPage(QuestionInfo q, int start, int pageSize);
+    public PageUtil<QuestionInfo> getQuestionInfosBySomeAndPage(QuestionInfo q, int pageNo, int pageSize);
 }
